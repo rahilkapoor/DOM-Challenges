@@ -1,0 +1,44 @@
+body {
+    margin: 10px;
+    padding: 0;
+    box-sizing: border-box;
+    background: #111;
+}
+
+#grid {
+    display: flex;
+    height: 800px;
+    width: 800px;
+    background: #fff;
+}
+
+.gridCol {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: 1px solid #333;
+}
+
+.box {
+    flex: 1;
+    flex-direction: row;
+    border: 1px solid #333;
+}
+
+#palette {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 800px;
+    margin-top: 10px;
+}
+
+.palette_colors {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50px;
+}
