@@ -1,8 +1,8 @@
 const palette_colors = ["#FF1744", "#D500F9", "#3D5AFE", "#00E676", "#FFFF00", "#FF6D00", "#78909C", "#3E2723", "#212121", "#E91E63"];
 
 const palette = document.getElementById("palette");
-const cols = 30;
-const rows = 30;
+const cols = 50;
+const rows = 50;
 const grid = document.getElementById("grid");
 let selected_color;
 
@@ -28,7 +28,7 @@ for (let i = 0; i < cols; i++) {
     for (let j = 0; j < rows; j++) {
         let box = document.createElement("box");
         box.classList = "box";
-        box.id = `"${i}${j}"`
+        box.id = `"${i}#${j}"`
         gridCol.appendChild(box);
     }
     gridCol.classList = "gridCol";
@@ -36,19 +36,23 @@ for (let i = 0; i < cols; i++) {
     grid.appendChild(gridCol);
 };
 
+
+grid.addEventListener("mouseover", (e) => {
+    let bid = e.target.id;
+    let box = document.getElementById(bid);
+    if (e.buttons == 1 || e.buttons == 3)
+        box.style = `background: ${selected_color}`;
+});
+
+
+
 grid.addEventListener("mousedown", (e) => {
-    if (!!selected_color == false)
-        console.log("No Color Selected!");
-    else {
+    if (!selected_color) {
         let bid = e.target.id;
         let box = document.getElementById(bid);
         box.style = `background: ${selected_color}`;
-
-        grid.addEventListener("mouseover", (e) => {
-            let bid = e.target.id;
-            let box = document.getElementById(bid);
-            if (e.buttons == 1 || e.buttons == 3)
-                box.style = `background: ${selected_color}`;
-        });
+    }
+    else {
+        console.log("No Color Selected!");
     }
 });
